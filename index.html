@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><title>ONE-G · 万机</title><meta name="description" content="ONE-G 种子轮商业计划书：万机，面向多品牌、多形态机器人的具身智能开发与应用平台。"><script>try{const q=new URLSearchParams(location.search).get('theme');document.documentElement.dataset.theme=['light','dark'].includes(q)?q:(localStorage.getItem('one-g-theme')==='dark'?'dark':'light');}catch{document.documentElement.dataset.theme='light';}</script><style>.logo-crop img{top:0!important;transform:translateY(-38.334%)}
+<!doctype html><html lang="zh-CN" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark"><title>ONE-G · 万机</title><meta name="description" content="ONE-G 种子轮商业计划书：万机，面向多品牌、多形态机器人的具身智能开发与应用平台。"><script>try{const q=new URLSearchParams(location.search).get('theme');document.documentElement.dataset.theme=['light','dark'].includes(q)?q:'dark';}catch{document.documentElement.dataset.theme='dark';}</script><style>.logo-crop img{top:0!important;transform:translateY(-38.334%)}
 
 @media(max-width:900px) and (orientation:portrait){.slide.cover{min-height:930px}.slide.cover .cover-art{top:445px}}
 @media(max-width:360px) and (orientation:portrait){.slide.cover .cover-top>span:not(.logo-crop){display:none}.slide.cover .cover-title{font-size:22px}.slide.cover .cover-labels{gap:12px}.slide.cover .cover-labels span{font-size:14px;white-space:nowrap}.app-brand>span{display:none}}
@@ -2969,7 +2969,7 @@ html[data-theme="dark"] .graph-case-roadmap>span { color:#d8bb7d; }
     }
   });
   let initialLanguage=new URLSearchParams(location.search).get('lang');
-  if(!['zh','en'].includes(initialLanguage))try{initialLanguage=localStorage.getItem('one-g-language');}catch{}
+  if(!['zh','en'].includes(initialLanguage))initialLanguage='zh';
   setTheme(document.documentElement.dataset.theme,false);setLanguage(initialLanguage,false);syncMotionPreference();resize();go(hashPage(),false);
   window.ONEG={go:goContent,goStep:go,setLanguage,setTheme,get theme(){return theme;},get language(){return language;},get current(){return PAGE_META[current]?.number?PAGE_META[current].number-1:null;},get count(){return contentSlides.length;},get step(){return current;},get stepCount(){return slides.length;}};
 })();
