@@ -1,0 +1,77 @@
+#overview {
+  inset:0;
+  width:1080px;
+  max-width:calc(100vw - 64px);
+  max-height:calc(100dvh - 48px);
+  margin:auto;
+  padding:0;
+  overflow:hidden;
+  /* The discrete display transition keeps flex active during close. */
+  flex-direction:column;
+  border-color:var(--line);
+  border-radius:8px;
+  background:var(--paper);
+  color:var(--ink);
+  scroll-padding:0;
+  --overview-motion:720ms;
+  opacity:0;
+  transform:translateY(10px) scale(.985);
+  transition:opacity var(--overview-motion) ease-in-out,transform var(--overview-motion) ease-in-out,display var(--overview-motion) allow-discrete,overlay var(--overview-motion) allow-discrete;
+}
+#overview[open] { display:flex; opacity:1; transform:translateY(0) scale(1); }
+#overview::backdrop { opacity:0; transition:opacity var(--overview-motion,720ms) ease-in-out,display var(--overview-motion,720ms) allow-discrete,overlay var(--overview-motion,720ms) allow-discrete; }
+#overview[open]::backdrop { opacity:1; }
+@starting-style {
+  #overview[open] { opacity:0; transform:translateY(10px) scale(.985); }
+  #overview[open]::backdrop { opacity:0; }
+}
+#overview .dialog-heading {
+  position:relative;
+  top:auto;
+  flex:none;
+  margin:0;
+  padding:28px 36px;
+  gap:24px;
+  align-items:center;
+  background:var(--paper);
+}
+#overview .dialog-heading>div { align-items:center; gap:20px; }
+#overview .dialog-heading span { color:var(--muted); font-size:16px; font-weight:500; }
+#overview .dialog-heading h2 { margin:0; font-size:28px; line-height:1.3; font-weight:600; }
+#overview .close-dialog { position:static; width:40px; height:40px; flex:none; color:var(--muted); }
+#overview .overview-grid { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; padding:34px 20px 42px; min-height:0; overflow:auto; overscroll-behavior:contain; }
+#overview .overview-section { min-width:0; padding:0 16px; border:0; }
+#overview .overview-section+.overview-section { border-left:1px solid var(--line); }
+#overview .overview-section h3 { display:block; margin:0 14px 22px; font-size:22px; line-height:1.4; font-weight:600; color:var(--ink); }
+#overview .overview-section.is-current-chapter h3 { color:var(--blue); }
+#overview .chapter-entry { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:40px; padding:0; border:0; border-radius:3px; background:none; color:inherit; font:inherit; text-align:left; }
+#overview .chapter-entry .icon { width:18px; height:18px; flex:none; color:var(--muted); }
+#overview .chapter-entry:hover,#overview .chapter-entry[aria-current="page"] { color:var(--blue); }
+#overview .chapter-entry:hover .icon { color:var(--blue); }
+#overview .chapter-pages { display:grid; grid-template-columns:minmax(0,1fr); gap:6px; }
+#overview .chapter-pages button { position:relative; display:grid; grid-template-columns:26px minmax(0,1fr); align-items:center; gap:12px; min-height:64px; padding:14px; border:0; border-radius:4px; background:transparent; color:var(--ink); text-align:left; transition:background 220ms,color 220ms; }
+#overview .chapter-pages button small { margin:0; font-size:15px; font-weight:400; line-height:1.4; color:var(--muted); font-variant-numeric:tabular-nums; }
+#overview .chapter-pages button b { min-width:0; font-size:20px; font-weight:500; line-height:1.5; overflow-wrap:anywhere; }
+#overview .chapter-pages button:hover { background:color-mix(in srgb,var(--blue) 7%,transparent); color:var(--blue); }
+#overview .chapter-pages button[aria-current="page"] { background:color-mix(in srgb,var(--blue) 11%,transparent); color:var(--blue); }
+#overview .chapter-pages button[aria-current="page"]::before { content:""; position:absolute; inset:13px auto 13px 0; width:3px; border-radius:2px; background:var(--blue); }
+#overview .chapter-pages button[aria-current="page"] small { color:var(--blue); }
+#overview button:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+html:lang(en) #overview .overview-section h3 { min-height:56px; font-size:20px; }
+html:lang(en) #overview .chapter-pages button b { font-size:18px; }
+@media(max-width:900px) {
+  #overview { width:680px; max-width:calc(100vw - 24px); max-height:calc(100dvh - 32px); }
+  #overview .dialog-heading { padding:16px 20px; }
+  #overview .dialog-heading h2 { font-size:22px; }
+  #overview .overview-grid { display:block!important; padding:4px 20px 12px; }
+  #overview .overview-section { padding:20px 0; }
+  #overview .overview-section+.overview-section { border-left:0; border-top:1px solid var(--line); }
+  #overview .overview-section h3,html:lang(en) #overview .overview-section h3 { flex-direction:row; align-items:baseline; gap:12px; min-height:0; margin:0 10px 10px; font-size:17px; }
+  #overview .chapter-pages button { min-height:46px; padding:10px; gap:12px; }
+  #overview .chapter-pages button b { font-size:16px; }
+  html:lang(en) #overview .chapter-pages button b { font-size:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #overview,#overview::backdrop,#overview .chapter-pages button { transition:none; }
+  #overview,#overview[open] { transform:none; }
+}
