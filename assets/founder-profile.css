@@ -37,7 +37,8 @@ html:lang(en) #slide-12 .founder-cohort{font-size:14px}
 #slide-12 .founder-publications .founder-stat-value>b{color:var(--blue)}
 #slide-12 .founder-companies .founder-stat-value>b{color:var(--teal)}
 #slide-12 .founder-stat-label{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-#slide-12 .founder-scholar-icon{flex:none}
+#slide-12 .founder-scholar-icon{display:inline-flex;flex:0 0 14px;width:14px;height:14px;color:var(--blue)}
+#slide-12 .founder-scholar-icon svg{width:100%;height:100%}
 #stage #slide-12 .founder-highlight p{font-size:18px;line-height:1.5!important;margin:5px 0 0;color:var(--muted)}
 #slide-12 .founder-highlight p>span{display:block}
 #slide-12 .founder-companies p>a{display:flex;align-items:baseline;gap:6px;width:fit-content;max-width:100%;color:inherit;text-decoration:none}
@@ -79,7 +80,6 @@ html:lang(en) #stage #slide-12 .founder-highlight p{font-size:17px;line-height:1
  #slide-12 .founder-robot .founder-stat-value{min-height:42px}
  #slide-12 .founder-robot .founder-stat-value>b,html:lang(en) #slide-12 .founder-robot .founder-stat-value>b{font-size:26px;white-space:normal}
  #stage #slide-12 .founder-highlight p,html:lang(en) #stage #slide-12 .founder-highlight p{font-size:16px;overflow-wrap:anywhere}
- #slide-12 .founder-scholar-icon{display:none}
  #slide-12 .founder-report{min-height:44px;gap:6px;font-size:13px}
  #slide-12 .founder-source-logo{width:60px;height:24px}
  #slide-12 .founder-source-logo img{max-width:54px;max-height:20px}
