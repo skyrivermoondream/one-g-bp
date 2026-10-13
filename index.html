@@ -2043,9 +2043,9 @@ html:lang(en) .graph-scene-options button { gap:6px; padding:3px 6px; font-size:
  .graph-category-dot { width:28px; height:28px; flex:0 0 28px; margin:0; }
  .is-right .graph-category { flex-direction:row; text-align:left; }
  #stage .graph-category-dot .icon { width:17px; height:17px; }
- .graph-branch .graph-module { top:var(--mobile-y); width:38%; height:34px; gap:6px; font-size:14px; line-height:1.2; }
- .is-left .graph-module { left:3%; flex-direction:row-reverse; text-align:right; }
- .is-right .graph-module { right:3%; flex-direction:row; text-align:left; }
+ .graph-branch .graph-module { top:var(--mobile-y); width:35%; height:34px; gap:6px; font-size:14px; line-height:1.2; }
+ .is-left .graph-module { left:0; flex-direction:row-reverse; text-align:right; }
+ .is-right .graph-module { right:0; flex-direction:row; text-align:left; }
  .graph-module-dot { width:22px; height:22px; flex-basis:22px; }
  .graph-module-dot .icon { width:13px; height:13px; }
  .graph-module-name { padding:2px 0; overflow-wrap:anywhere; }
@@ -2064,6 +2064,9 @@ html:lang(en) .graph-scene-options button { gap:6px; padding:3px 6px; font-size:
  .graph-scene-options button { height:66px; }
  .graph-product-options button { height:66px; padding:6px 12px; flex-direction:row; }
  .graph-product-entry-icon { width:26px; flex-basis:26px; }
+}
+@media(max-width:360px) and (orientation:portrait) {
+ .graph-branch .graph-module { width:40%; }
 }
 html.no-motion .graph-video-entry::before { animation:none; display:none; }
 html.no-motion :is(.graph-demo-badge,.graph-scene-options button,.graph-product-options button,.graph-entry-arrow) { transition:none; }
