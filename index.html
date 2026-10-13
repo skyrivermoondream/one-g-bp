@@ -2039,17 +2039,18 @@ html:lang(en) .graph-scene-options button { gap:6px; padding:3px 6px; font-size:
  .graph-core b { font-size:20px; }
  .graph-core small,html:lang(en) .graph-core small { font-size:11px; max-width:80px; }
  .graph-category { top:var(--mobile-cy); left:var(--mobile-cx); width:44%; height:38px; display:flex; align-items:center; gap:6px; text-align:left; }
- .graph-category>b { position:static; font-size:14px; line-height:1.2; }
+ .graph-category>b { position:static; font-size:15px; line-height:1.2; }
  .graph-category-dot { width:28px; height:28px; flex:0 0 28px; margin:0; }
  .is-right .graph-category { flex-direction:row-reverse; text-align:right; }
  #stage .graph-category-dot .icon { width:17px; height:17px; }
- .graph-branch .graph-module { top:var(--mobile-y); width:44%; height:34px; gap:6px; font-size:13px; line-height:1.2; }
+ .graph-branch .graph-module { top:var(--mobile-y); width:44%; height:34px; gap:6px; font-size:14px; line-height:1.2; }
  .is-left .graph-module { left:3%; flex-direction:row; text-align:left; }
  .is-right .graph-module { right:3%; flex-direction:row-reverse; text-align:right; }
  .graph-module-dot { width:22px; height:22px; flex-basis:22px; }
  .graph-module-dot .icon { width:13px; height:13px; }
- .graph-module-name { padding:2px 0; }
- .graph-demo-badge { width:18px; height:20px; padding:0; justify-content:center; }
+ .graph-module-name { padding:2px 0; overflow-wrap:anywhere; }
+ .graph-demo-badge { position:absolute; right:-4px; bottom:-1px; width:15px; height:15px; padding:0; justify-content:center; border-radius:50%; background:var(--paper); }
+ #stage .graph-demo-badge .icon { width:8px; height:8px; }
  .graph-demo-badge>span { display:none; }
  html:lang(en) .graph-category>b { font-size:12px; }
  html:lang(en) .graph-module { font-size:11.5px; }
