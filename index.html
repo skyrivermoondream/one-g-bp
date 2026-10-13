@@ -1927,7 +1927,7 @@ html:lang(en) #stage .slide .integration-step-heading h3 { font-size:22px; }
 #graph-motion { position:absolute; top:24px; right:58px; z-index:4; width:34px; height:34px; border:1px solid var(--line); border-radius:5px; color:var(--muted); background:var(--paper); }
 #graph-motion .icon { width:16px; height:16px; }
 #graph-motion:disabled { opacity:.5; }
-.capability-graph { --inactive-node-opacity:.52; --inactive-link-opacity:.42; --node-shadow:#00000012; --node-glow:10%; --selected-glow:23%; height:500px; width:100%; position:relative; isolation:isolate; }
+.capability-graph { --inactive-node-opacity:.28; --inactive-link-opacity:.2; --node-shadow:#00000012; --node-glow:10%; --selected-glow:23%; height:500px; width:100%; position:relative; isolation:isolate; }
 html[data-theme="dark"] .capability-graph { --node-shadow:#00000033; --node-glow:12%; --selected-glow:28%; }
 .graph-links { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:visible; }
 .graph-links path { fill:none; stroke-linecap:round; }
@@ -1983,6 +1983,10 @@ html[data-theme="dark"] .graph-core .brand-mark img { filter:invert(1)!important
 .capability-graph[data-selection] .graph-category:focus-visible,
 .capability-graph[data-selection] .graph-module:focus-visible { opacity:1; }
 .capability-graph button:focus-visible { outline:2px solid var(--blue); outline-offset:6px; }
+.graph-module-featured .graph-module-dot { border-color:var(--tone); }
+.graph-demo-badge { display:inline-flex; align-items:center; gap:4px; flex:0 0 auto; height:24px; padding:0 7px; border:1px solid color-mix(in srgb,var(--tone) 55%,var(--line)); border-radius:4px; background:color-mix(in srgb,var(--tone) 13%,var(--paper)); color:var(--ink); font-size:11px; font-weight:500; line-height:1; white-space:nowrap; transition:background-color .25s,border-color .25s; }
+#stage .graph-demo-badge .icon { width:10px; height:10px; fill:currentColor; color:inherit; }
+.graph-module-featured:is(:hover,:focus-visible) .graph-demo-badge { background:color-mix(in srgb,var(--tone) 25%,var(--paper)); border-color:var(--tone); }
 .graph-controls { display:grid; grid-template-columns:1.08fr 1.1fr .92fr; gap:24px; margin-top:16px; padding-top:20px; border-top:1px solid var(--line); }
 .graph-taskbar,.graph-scenebar,.graph-productbar { display:grid; grid-template-rows:18px 48px minmax(40px,auto); gap:10px; align-items:start; min-width:0; }
 .graph-control-label { color:var(--muted); font-size:13px; font-weight:500; line-height:18px; }
@@ -1996,14 +2000,31 @@ html[data-theme="dark"] .graph-core .brand-mark img { filter:invert(1)!important
 .graph-controls .icon { width:16px; height:16px; flex:0 0 16px; }
 .graph-scenebar>.graph-control-label { color:var(--ink); font-weight:600; }
 .graph-scene-options { padding:0; gap:6px; background:transparent; }
-.graph-scene-options button { height:48px; border:1px solid color-mix(in srgb,var(--blue) 25%,var(--line)); background:color-mix(in srgb,var(--blue) 4%,var(--paper)); color:var(--ink); }
-.graph-scene-options button:hover,.graph-scene-options button:focus-visible,.graph-scene-options button[aria-pressed="true"] { border-color:var(--blue); }
-.graph-scene-play { display:grid; place-items:center; flex:0 0 18px; width:18px; height:18px; border:1px solid currentColor; border-radius:50%; color:var(--blue); }
-.graph-scene-play .icon { width:10px; height:10px; margin-left:1px; }
+.graph-scene-options button { position:relative; isolation:isolate; height:48px; padding:3px 8px; gap:8px; border:1px solid color-mix(in srgb,var(--blue) 44%,var(--line)); background:color-mix(in srgb,var(--blue) 9%,var(--paper)); color:var(--ink); font-weight:500; transition:background-color .25s,border-color .25s,box-shadow .25s; }
+.graph-scene-options button:is(:hover,:focus-visible,[aria-pressed="true"]) { border-color:var(--blue); background:color-mix(in srgb,var(--blue) 15%,var(--paper)); box-shadow:0 3px 12px color-mix(in srgb,var(--blue) 12%,transparent); color:var(--ink); }
+.graph-scene-play { display:grid; place-items:center; flex:0 0 26px; width:26px; height:26px; border-radius:50%; background:var(--blue); color:var(--paper); }
+#stage .graph-scene-play .icon { width:12px; height:12px; flex-basis:12px; margin-left:2px; fill:currentColor; color:inherit; }
+/* The animated highlight stays inside a thin border and never covers the labels. */
+@property --graph-entry-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+.graph-video-entry::before { content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1.5px; background:conic-gradient(from var(--graph-entry-angle),transparent 65%,var(--blue) 82%,var(--teal) 92%,transparent); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; pointer-events:none; opacity:.85; animation:graph-entry-orbit 8s linear infinite paused; }
+.graph-video-entry:nth-child(2)::before { animation-delay:-2.6s; }
+.graph-video-entry:nth-child(3)::before { animation-delay:-5.3s; }
+.graph-slide.is-active[data-entry-motion="running"] .graph-video-entry::before { animation-play-state:running; }
+@keyframes graph-entry-orbit { to { --graph-entry-angle:360deg; } }
+.graph-product-options { padding:0; gap:8px; background:transparent; }
+.graph-product-options button { height:48px; padding:3px 9px; gap:6px; border:1px solid color-mix(in srgb,var(--blue) 22%,var(--line)); background:var(--paper); color:var(--ink); font-weight:500; transition:background-color .25s,border-color .25s,box-shadow .25s; }
+.graph-product-entry-icon { display:grid; place-items:center; width:22px; height:28px; flex:0 0 22px; color:var(--blue); }
+.graph-entry-arrow { display:grid; place-items:center; margin-left:auto; color:var(--blue); transition:transform .25s; }
+.graph-controls .graph-entry-arrow .icon { width:12px; height:12px; flex-basis:12px; }
+.graph-product-options button:is(:hover,:focus-visible,[aria-pressed="true"]) { border-color:var(--blue); background:color-mix(in srgb,var(--blue) 8%,var(--paper)); box-shadow:0 3px 12px color-mix(in srgb,var(--blue) 10%,transparent); color:var(--ink); }
+.graph-product-options button:is(:hover,:focus-visible) .graph-entry-arrow { transform:translateX(2px); }
 .graph-outcome,.graph-scene-result,.graph-product-result { min-width:0; font-size:14px; font-weight:400; line-height:1.45; color:var(--ink); }
 html:lang(en) .graph-module { font-size:16px; }
 html:lang(en) .graph-category>b { font-size:19px; }
 html:lang(en) .graph-core small { font-size:13px; }
+html:lang(en) .graph-module-featured { gap:7px; }
+html:lang(en) .graph-demo-badge { padding:0 5px; }
+html:lang(en) .graph-scene-options button { gap:6px; padding:3px 6px; font-size:13px; }
 
 @media(max-width:900px) and (orientation:portrait) {
  #stage .graph-slide { padding-top:30px; }
@@ -2025,11 +2046,14 @@ html:lang(en) .graph-core small { font-size:13px; }
  .graph-task-options,.graph-scene-options,.graph-product-options { height:66px; }
  .graph-controls button { min-width:0; height:58px; padding:2px; flex-direction:column; gap:4px; font-size:13px; }
  .graph-scene-options button { height:66px; }
- .graph-product-options button { flex-direction:row; }
+ .graph-product-options button { height:66px; padding:6px 12px; flex-direction:row; }
+ .graph-product-entry-icon { width:26px; flex-basis:26px; }
 }
+html.no-motion .graph-video-entry::before { animation:none; display:none; }
+html.no-motion :is(.graph-demo-badge,.graph-scene-options button,.graph-product-options button,.graph-entry-arrow) { transition:none; }
 html.no-motion .capability-graph :is(path,.graph-category,.graph-module,.graph-core-dot,.graph-category-dot,.graph-module-dot) { transition:none; }
-@media(prefers-reduced-motion:reduce) { #graph-details[open] { animation:none; } .graph-link-beam { display:none; } .graph-links path,.graph-category,.graph-module,.graph-core-dot,.graph-category-dot,.graph-module-dot { transition:none; } }
-@media print { .graph-link-beam,#graph-motion { display:none; } .capability-graph { --inactive-node-opacity:1; --inactive-link-opacity:1; } .graph-links path,.graph-category,.graph-module,.graph-core-dot,.graph-category-dot,.graph-module-dot { transition:none; } .capability-graph :is(.graph-core-dot,.graph-category .graph-category-dot,.graph-module .graph-module-dot) { box-shadow:none; } }
+@media(prefers-reduced-motion:reduce) { #graph-details[open] { animation:none; } .graph-link-beam,.graph-video-entry::before { display:none; animation:none; } .graph-links path,.graph-category,.graph-module,.graph-core-dot,.graph-category-dot,.graph-module-dot,.graph-demo-badge,.graph-scene-options button,.graph-product-options button,.graph-entry-arrow { transition:none; } }
+@media print { .graph-link-beam,#graph-motion,.graph-video-entry::before { display:none; animation:none; } .capability-graph { --inactive-node-opacity:1; --inactive-link-opacity:1; } .graph-links path,.graph-category,.graph-module,.graph-core-dot,.graph-category-dot,.graph-module-dot { transition:none; } .capability-graph :is(.graph-core-dot,.graph-category .graph-category-dot,.graph-module .graph-module-dot) { box-shadow:none; } }
 
 /* Dialog typography and layout, shared by capability, case and product views. */
 #graph-details {
