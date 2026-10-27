@@ -9,7 +9,7 @@
  });
  const items=[
   {src:'assets/image9.jpg',title:['李晓文','Li Xiaowen'],caption:['李晓文','Li Xiaowen']},
-  {src:'assets/founder-industrial-robotics-center-clean.png',href:'assets/founder-industrial-robotics-center.jpg',title:['行业应用机器人技术创新中心','Industrial Application Robotics Technology Innovation Center'],caption:['浙江清华长三角研究院','Yangtze Delta Region Institute of Tsinghua']},
+  {src:'assets/founder-industrial-robotics-center-clean.svg',href:'assets/founder-industrial-robotics-center.jpg',title:['行业应用机器人技术创新中心','Industrial Application Robotics Technology Innovation Center'],caption:['浙江清华长三角研究院','Yangtze Delta Region Institute of Tsinghua']},
   {src:'assets/founder-team-background.jpg',title:['团队合影','Team Photo'],caption:['团队合影','Team photo']},
   {src:'assets/founder-huzhou-robotics-center-toned.svg',href:'assets/founder-huzhou-robotics-center.png',title:['智能跨域机器人研究中心','Intelligent Cross-Domain Robotics Research Center'],caption:['浙江大学湖州研究院','Huzhou Institute of Zhejiang University']}
  ];

@@ -3,8 +3,8 @@
  if(!slide)return;
  const website='https://one-g-modules-demo.pale-finch-0947.chatgpt.site';
  const items=[
-  {src:'assets/one-g-commerce-demo-catalog.png',title:['ONE-G 官网 · 示例','ONE-G Website · Demo'],caption:['产品目录与模块选配示例','Product catalog and module configuration demo'],href:website,kind:'website'},
-  {src:'assets/one-g-commerce-demo-scenario.png',title:['ONE-G 官网 · 场景选配示例','ONE-G Website · Use-case Demo'],caption:['按应用场景组合模块，整理项目需求','Combine modules by use case and define project requirements'],href:website+'#solutions',kind:'website'}
+  {src:'assets/one-g-commerce-demo-catalog.jpg',title:['ONE-G 官网 · 示例','ONE-G Website · Demo'],caption:['产品目录与模块选配示例','Product catalog and module configuration demo'],href:website,kind:'website'},
+  {src:'assets/one-g-commerce-demo-scenario.jpg',title:['ONE-G 官网 · 场景选配示例','ONE-G Website · Use-case Demo'],caption:['按应用场景组合模块，整理项目需求','Combine modules by use case and define project requirements'],href:website+'#solutions',kind:'website'}
  ];
  const icons={zoom:document.querySelector('#fullscreen-btn svg'),external:document.querySelector('#slide-4 .fa-reference-caption svg'),play:document.querySelector('.video-start svg')};
  slide.querySelectorAll('[data-entry-icon]').forEach(slot=>{const icon=icons[slot.dataset.entryIcon];if(icon)slot.append(icon.cloneNode(true));});
